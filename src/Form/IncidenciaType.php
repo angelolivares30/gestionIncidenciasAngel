@@ -27,7 +27,7 @@ class IncidenciaType extends AbstractType
             ])
             ->add('cliente', EntityType::class, [
                 'class' => Cliente::class,
-'choice_label' => 'id',
+                'choice_label' => 'id',
             ])
             ->add('Insertar',SubmitType::class)
         ;
