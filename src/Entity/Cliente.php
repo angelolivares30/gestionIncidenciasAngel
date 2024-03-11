@@ -15,13 +15,13 @@ class Cliente
     #[ORM\Column(type:"integer")]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(length: 255, nullable: false)]
     private ?string $nombre = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $apellidos = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(length: 255, nullable: false)]
     private ?string $telefono = null;
 
     #[ORM\Column(length: 255, nullable: true)]

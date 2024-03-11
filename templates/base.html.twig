@@ -14,7 +14,15 @@
         {% endblock %}
     </head>
     <body>
-    
+       {% for flashType, messages in app.session.flashbag.all() %}
+    {% for message in messages %}
+        <div id="alert" class="alert {% if flashType is same as('ss') %}alert-success{% elseif flashType is same as('wa') %}alert-warning{% elseif flashType is same as('error') %}alert-danger{% else %}alert-primary{% endif %} mb-2 rounded">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endfor %}
+
+
         {% block body %}
 
         {% endblock %}

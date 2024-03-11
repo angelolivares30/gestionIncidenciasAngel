@@ -27,6 +27,8 @@ class ClienteController extends AbstractController
     $form->handleRequest($request);
     
     if ($form->isSubmitted() && $form->isValid()) {
+        $this->addFlash('ss', '¡Se ha añadido correctamente!');
+
         $this->em->persist($cliente);
         $this->em->flush();
         
@@ -43,8 +45,10 @@ class ClienteController extends AbstractController
     {
         // Verificar si el usuario tiene acceso al rol ROLE_USER_AUTHENTICATED
         $this->denyAccessUnlessGranted('ROLE_USER', null, 'Acceso denegado');
+
         $cliente = $clienteRepository->findAll();
         return $this->render('cliente/verClientes.html.twig', ['clientes' => $cliente]);
+
         
     }
 
@@ -52,6 +56,8 @@ class ClienteController extends AbstractController
     public function delete(Cliente $cliente, EntityManagerInterface $entityManager):Response
     {
         $this->denyAccessUnlessGranted('ROLE_USER', null, 'Acceso denegado');
+        $this->addFlash('ss', '¡Se ha borrado correctamente!');
+
         $entityManager->remove($cliente);
         $entityManager->flush();
         return $this->redirectToRoute('listaClientes');
