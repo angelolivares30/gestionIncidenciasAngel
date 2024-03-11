@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lista de Clientes{% endblock %}
+
+{% block body %}
+{% if app.user %}
+<div class="container mt-4">
+    <div class="alert alert-info" role="alert">
+        Has iniciado sesión como {{ app.user.userIdentifier }}, <a href="{{ path('logout') }}" class="alert-link">Cerrar sesión</a>
+    </div>
+</div>
+{% endif %}
+
+<div class="container">
+    <div class="mb-4">
+        <a href="{{ path('ver_incidencias') }}" class="btn btn-primary me-2">Ver Incidencias</a>
+    </div>
+    
+    <h1 class="my-4">Lista de Clientes</h1>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellidos</th>
+                    <th>Teléfono</th>
+                    <th>Dirección</th>
+                    <th>Operaciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cliente in clientes %}
+                <tr>
+                    <td>{{ cliente.nombre }}</td>
+                    <td>{{ cliente.apellidos }}</td>
+                    <td>{{ cliente.telefono }}</td>
+                    <td>{{ cliente.direccion }}</td>
+                    <td>
+                        <a href="{{ path('deleteCliente', {id: cliente.id}) }}" class="btn btn-danger btn-sm me-2">Borrar cliente</a>
+                        <a href="{{ path('incidenciaPorCliente', {id: cliente.id}) }}" class="btn btn-primary btn-sm">Ver Incidencias del cliente</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <a href="{{ path('app_cliente') }}" class="btn btn-success mt-3">Insertar cliente</a>
+</div>
+{% endblock %}

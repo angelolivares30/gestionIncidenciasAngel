@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Agregar Incidencia{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h1 class="my-4">Agregar Incidencia</h1>
+            <form method="post">
+                {{ form_start(formularioIncidencia, {'attr': {'class': 'form-group'}}) }}
+                <div class="mb-3">
+                    {{ form_label(formularioIncidencia.titulo, 'Título', {'attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(formularioIncidencia.titulo, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(formularioIncidencia.titulo) }}
+                </div>
+                <div class="mb-3">
+                    {{ form_label(formularioIncidencia.estado, 'Estado', {'attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(formularioIncidencia.estado, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(formularioIncidencia.estado) }}
+                </div>
+                <div class="mb-3">
+                    {{ form_label(formularioIncidencia.cliente, 'Cliente', {'attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(formularioIncidencia.cliente, {'attr': {'class': 'form-select'}}) }}
+                    {{ form_errors(formularioIncidencia.cliente) }}
+                </div>
+                {{ form_end(formularioIncidencia) }}
+            </form>
+        </div>
+    </div>
+    {# <a href="{{ path('incidenciaPorCliente', {id: cliente.id}) }}" class="btn btn-primary btn-sm">Volver Incidencias</a> #}
+
+</div>
+{% endblock %}

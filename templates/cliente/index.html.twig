@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Insertar Cliente{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="card border-0 shadow-lg">
+                <div class="card-body p-5">
+                    <h1 class="mb-4 text-center">Insertar Cliente</h1>
+                    <form method="post">
+                        {{ form_start(form, {'attr': {'class': 'row g-3'}}) }}
+                        <div class="col-md-12">
+                            {{ form_row(form.nombre, {'attr': {'class': 'form-control form-control-lg', 'placeholder': 'Nombre'}}) }}
+                        </div>
+                        <div class="col-md-12">
+                            {{ form_row(form.apellidos, {'attr': {'class': 'form-control form-control-lg', 'placeholder': 'Apellidos'}}) }}
+                        </div>
+                        <div class="col-md-12">
+                            {{ form_row(form.telefono, {'attr': {'class': 'form-control form-control-lg', 'placeholder': 'Teléfono'}}) }}
+                        </div>
+                        <div class="col-md-12">
+                            {{ form_row(form.direccion, {'attr': {'class': 'form-control form-control-lg', 'placeholder': 'Dirección'}}) }}
+                        </div>
+                        <div class="col-12">
+                          {{ form_end(form) }}
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text-center mt-3">
+        <a href="{{ path('listaClientes') }}" class="btn btn-secondary btn-lg">Volver Atrás</a>
+    </div>
+</div>
+{% endblock %}

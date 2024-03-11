@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Incidencias del Cliente {{ cliente.nombre }}{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h1 class="my-4 text-center">Incidencias del Cliente {{ cliente.nombre }}</h1>
+    
+    {% if incidencias is empty %}
+        <div class="alert alert-info" role="alert">
+            No hay incidencias registradas para este cliente.
+        </div>
+    {% else %}
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+            {% for incidencia in incidencias %}
+                <div class="col">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ incidencia.titulo }}</h5>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><strong>ID:</strong> {{ incidencia.id }}</li>
+                                <li class="list-group-item"><strong>Estado:</strong> {{ incidencia.estado }}</li>
+                                <li class="list-group-item"><strong>Fecha de Creación:</strong> {{ incidencia.fechaCreacion|date('Y-m-d H:i:s') }}</li>
+                            </ul>
+                            <div class="text-end mt-3">
+                                <a href="{{ path('deleteIncidencia', {id: incidencia.id}) }}" class="btn btn-danger me-2">Borrar</a>
+                                <a href="{{ path('actualizarIncidencia', {id: incidencia.id}) }}" class="btn btn-primary">Editar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <div class="text-center mt-4">
+        <a href="{{ path('insertarIncidencia', {id: cliente.id}) }}" class="btn btn-success me-2">Insertar Incidencia</a>
+        <a href="{{ path('listaClientes') }}" class="btn btn-secondary">Volver Atrás</a>
+    </div>
+</div>
+{% endblock %}

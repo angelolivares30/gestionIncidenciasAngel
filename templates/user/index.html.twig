@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Registro de Usuario{% endblock %}
+
+{% block body %}
+<div class="container my-5">
+    <h1 class="text-center my-4">Registro de Usuario</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <form method="post" enctype="multipart/form-data">
+                        {{ form_start(registration_form, {'attr': {'class': 'form-group'}}) }}
+                        <div class="mb-3">
+                            {{ form_label(registration_form.email, 'Email', {'attr': {'class': 'form-label'}}) }}
+                            {{ form_widget(registration_form.email, {'attr': {'class': 'form-control', 'placeholder': 'Ingrese su email'}}) }}
+                            {{ form_errors(registration_form.email) }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form_label(registration_form.password, 'Contraseña', {'attr': {'class': 'form-label'}}) }}
+                            {{ form_widget(registration_form.password, {'attr': {'class': 'form-control', 'placeholder': 'Ingrese su contraseña'}}) }}
+                            {{ form_errors(registration_form.password) }}
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                {{ form_label(registration_form.nombre, 'Nombre', {'attr': {'class': 'form-label'}}) }}
+                                {{ form_widget(registration_form.nombre, {'attr': {'class': 'form-control', 'placeholder': 'Ingrese su nombre'}}) }}
+                                {{ form_errors(registration_form.nombre) }}
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                {{ form_label(registration_form.apellidos, 'Apellidos', {'attr': {'class': 'form-label'}}) }}
+                                {{ form_widget(registration_form.apellidos, {'attr': {'class': 'form-control', 'placeholder': 'Ingrese sus apellidos'}}) }}
+                                {{ form_errors(registration_form.apellidos) }}
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            {{ form_label(registration_form.telefono, 'Teléfono', {'attr': {'class': 'form-label'}}) }}
+                            {{ form_widget(registration_form.telefono, {'attr': {'class': 'form-control', 'placeholder': 'Ingrese su número de teléfono'}}) }}
+                            {{ form_errors(registration_form.telefono) }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form_label(registration_form.foto, 'Foto', {'attr': {'class': 'form-label'}}) }}
+                            {{ form_widget(registration_form.foto, {'attr': {'class': 'form-control'}}) }}
+                            {{ form_errors(registration_form.foto) }}
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg btn-block">Registrarse</button>
+                        </div>
+                        {{ form_end(registration_form) }}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text-center mt-3">
+        <a href="{{ path('login') }}" class="btn btn-link">Volver al inicio de sesión</a>
+    </div>
+</div>
+{% endblock %}

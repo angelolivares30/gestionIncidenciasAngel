@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Actualizar Incidencia{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h1 class="my-4 text-center">Actualizar Incidencia</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-body">
+                    <form method="post">
+                        {{ form_start(formularioIncidencia, {'attr': {'class': 'form-group'}}) }}
+                        <div class="mb-3">
+                            {{ form_label(formularioIncidencia.titulo, 'Título', {'attr': {'class': 'form-label'}}) }}
+                            {{ form_widget(formularioIncidencia.titulo, {'attr': {'class': 'form-control'}}) }}
+                            {{ form_errors(formularioIncidencia.titulo) }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form_label(formularioIncidencia.estado, 'Estado', {'attr': {'class': 'form-label'}}) }}
+                            {{ form_widget(formularioIncidencia.estado, {'attr': {'class': 'form-select'}}) }}
+                            {{ form_errors(formularioIncidencia.estado) }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form_label(formularioIncidencia.cliente, 'Cliente', {'attr': {'class': 'form-label'}}) }}
+                            {{ form_widget(formularioIncidencia.cliente, {'attr': {'class': 'form-select'}}) }}
+                            {{ form_errors(formularioIncidencia.cliente) }}
+                        </div>
+                        {{ form_end(formularioIncidencia) }}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
