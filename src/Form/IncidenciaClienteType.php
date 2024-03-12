@@ -11,7 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class IncidenciaType extends AbstractType
+class IncidenciaClienteType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -25,12 +25,7 @@ class IncidenciaType extends AbstractType
                 ],
                 'placeholder' => 'Selecciona un estado', // Opcional: agrega un elemento por defecto
             ])
-            ->add('cliente', EntityType::class, [
-                'class' => Cliente::class,
-                'choice_label' => 'id',
-            ])
-            ->add('Insertar',SubmitType::class)
-        ;
+            ->add('Submit', SubmitType::class);   
     }
 
     public function configureOptions(OptionsResolver $resolver): void

@@ -22,6 +22,8 @@ class ClienteController extends AbstractController
     #[Route('/insertarCliente', name: 'app_cliente')]
     public function index(Request $request): Response
 {
+    $this->denyAccessUnlessGranted('ROLE_USER', null, 'Acceso denegado');
+
     $cliente = new Cliente();
     $form = $this->createForm(ClienteType::class, $cliente);
     $form->handleRequest($request);
@@ -72,5 +74,5 @@ class ClienteController extends AbstractController
             'cliente' => $cliente,
             'incidencias' => $incidencias,
         ]);
-    }
+    }       
 }

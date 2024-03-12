@@ -15,7 +15,7 @@
         </div>
     {% else %}
         <div class="row row-cols-1 row-cols-md-2 g-4">
-            {% for incidencia in incidencias %}
+            {% for incidencia in incidencias|reverse %}
                 <div class="col">
                     <div class="card shadow">
                         <div class="card-body">
@@ -26,8 +26,8 @@
                                 <li class="list-group-item"><strong>Fecha de Creación:</strong> {{ incidencia.fechaCreacion|date('Y-m-d H:i:s') }}</li>
                             </ul>
                             <div class="text-end mt-3">
-                                <a href="{{ path('deleteIncidencia', {id: incidencia.id}) }}" class="btn btn-danger me-2">Borrar</a>
-                                <a href="{{ path('actualizarIncidencia', {id: incidencia.id}) }}" class="btn btn-primary">Editar</a>
+                                <a href="{{ path('deleteIncidenciaGeneral', {id: incidencia.id}) }}" class="btn btn-danger me-2">Borrar</a>
+                                <a href="{{ path('actualizarIncidenciaGeneral', {id: incidencia.id}) }}" class="btn btn-primary">Editar</a>
                             </div>
                         </div>
                     </div>
@@ -35,6 +35,7 @@
             {% endfor %}
         </div>
     {% endif %}
+
 
     {# <div class="text-center mt-4">
         <a href="{{ path('listaClientes') }}" class="btn btn-secondary">Volver Atrás</a>
